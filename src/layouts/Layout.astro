@@ -26,8 +26,8 @@ const { title } = Astro.props;
                 <nav>
                     <ul class="nav-links">
                         <li><a href="/">VISIÓN</a></li>
-                        <li><a href="#features">INTERVENCIÓN</a></li>
-                        <li><a href="/about">CASOS</a></li>
+                        <li><a href="#metodologia">INTERVENCIÓN</a></li>
+                        <li><a href="/#equipo">EQUIPO</a></li>
                         <li><a href="#contacto">CONTACTO</a></li>
                     </ul>
                 </nav>
@@ -46,7 +46,7 @@ const { title } = Astro.props;
 
 <style is:global>
     :root {
-        --bg-color: #0a0a0c;
+        --bg-color: #000051;
         --text-color: #f4f4f9;
         --accent-color: #ffffff;
         --border-color: rgba(255, 255, 255, 0.1);
@@ -134,7 +134,7 @@ const { title } = Astro.props;
         width: 100%;
         height: 100%;
         z-index: -1;
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
+        background: linear-gradient(rgba(0, 8, 123, 0.458), rgba(0, 0, 0, 0.6)), 
                     url('/header.png') no-repeat center center/cover;
         animation: zoom-efecto 20s infinite alternate ease-in-out;
     }
@@ -291,7 +291,7 @@ const { title } = Astro.props;
 /* Configuración de Secciones Genéricas */
   .section-light {
     background-color: #e0e0dc; /* El gris de la captura */
-    color: #1a2333;
+    color: #000051;
     padding: 8rem 0;
   }
 
@@ -375,7 +375,7 @@ const { title } = Astro.props;
   }
 
   .section-light .lead {
-    color: #333;
+    color: #000000;
     margin: 0; /* Para el split-grid */
     text-align: left;
   }
@@ -383,15 +383,15 @@ const { title } = Astro.props;
   /* Tarjetas (Cards) */
   .card {
     padding: 3rem 2rem;
-    background: #16161a;
-    border: 1px solid #2d2d33;
+    background: #000051;
+    border: 1px solid #ffffff;
     border-radius: 12px;
     transition: transform 0.3s ease;
   }
 
   .card:hover {
     transform: translateY(-5px);
-    border-color: #444;
+    border-color: #000051;
   }
 
   .card h3 {
@@ -409,7 +409,8 @@ const { title } = Astro.props;
 
   .trajectory-section {
     padding: 100px 0;
-    background-color: #0a0a0c; /* Fondo oscuro profundo */
+    background-color: #000051; /* Fondo oscuro profundo */
+	align-content: center;
   }
 
   /* Alineación de las dos columnas superiores */
@@ -440,17 +441,18 @@ const { title } = Astro.props;
   }
 
   /* Contenedor del Mapa a la derecha */
-  .trajectory-visual {
+.trajectory-visual {
     flex: 1;
     display: flex;
-    justify-content: flex-end; /* Lo empuja a la derecha */
-    align-items: center;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    width: 100%;             /* Asegura que ocupe todo el ancho disponible */
   }
 
   .peru-map {
     width: 100%;
     max-width: 250px;
-    height: auto;
+    height: center;
     /* Efecto de línea blanca brillante */
     filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
     opacity: 0.9;
@@ -561,7 +563,7 @@ const { title } = Astro.props;
   }
 
   .service-card:hover {
-    background-color: #1a2333;
+    background-color: #000051;
     color: white;
   }
 
@@ -610,7 +612,7 @@ const { title } = Astro.props;
     }
   }
   .consultants-section {
-    background-color: #0a0a0c; /* Fondo oscuro */
+    background-color: #000051; /* Fondo oscuro */
     padding: 100px 0;
     overflow: hidden;
   }
@@ -638,7 +640,7 @@ const { title } = Astro.props;
   .consultant-card {
     flex: 0 0 350px; /* Ancho fijo para cada tarjeta */
     scroll-snap-align: start;
-    background: #16161a;
+    background: #000051;
     border: 1px solid #2d2d33;
     border-radius: 20px;
     overflow: hidden;
@@ -742,7 +744,7 @@ const { title } = Astro.props;
   }
 
   .contact-item:hover {
-    color: #000;
+    color: #000051;
     border-bottom: 1px solid #000;
   }
 
