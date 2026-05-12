@@ -1,23 +1,767 @@
+---
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header class="navbar">
+            <div class="container nav-container">
+                <a href="/" class="logo-container">
+                    <img src="/Logo_centurion.png" alt="Centurión Logo" class="nav-logo" />
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/">VISIÓN</a></li>
+                        <li><a href="#features">INTERVENCIÓN</a></li>
+                        <li><a href="/about">CASOS</a></li>
+                        <li><a href="#contacto">CONTACTO</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <slot />
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; {new Date().getFullYear()} Centurión Estrategia</p>
+            </div>
+        </footer>
+    </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+    :root {
+        --bg-color: #0a0a0c;
+        --text-color: #f4f4f9;
+        --accent-color: #ffffff;
+        --border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+        font-family: 'DM Sans', system-ui, sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+        scroll-behavior: smooth;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        width: 100%;
+    }
+
+    /* NAVBAR: Flotante sobre el Hero */
+    .navbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 2rem 0;
+        z-index: 100;
+        background: transparent;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo {
+        height: 50px;
+        object-fit: contain;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 2.5rem;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        transition: opacity 0.3s;
+    }
+
+    .nav-links a:hover { opacity: 0.7; }
+
+    /* --- ESTRUCTURA HERO (ESTILO CENTURIÓN) --- */
+    .hero {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        text-align: center;
+        color: white;
+    }
+
+    /* Fondo con animación Zoom */
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
+                    url('/header.png') no-repeat center center/cover;
+        animation: zoom-efecto 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes zoom-efecto {
+        from { transform: scale(1); }
+        to { transform: scale(1.12); }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 3;
+        max-width: 950px;
+        padding: 0 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 7vw, 4.8rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero h1 i { font-style: italic; font-weight: 300; }
+
+    .subtitle {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        margin-bottom: 0.8rem;
+        color: #d1d5db;
+    }
+
+    .hero h2 {
+        font-size: clamp(3rem, 2vw, 1.25rem);
+        font-weight: 600;
+        color: #f3f4f6;
+        margin-bottom: 3.5rem;
+    }
+
+    /* BOTÓN PÍLDORA */
+    .cta-button {
+        display: inline-block;
+        padding: 1.2rem 3.5rem;
+        background-color: #e5e7eb;
+        color: #111827;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 60px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background-color: white;
+        transform: translateY(-3px) scale(1.02);
+    }
+
+    /* FLECHA SCROLL */
+    .scroll-down {
+        position: absolute;
+        bottom: 40px;
+        width: 30px;
+        fill: white;
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-10px);}
+    }
+
+    /* FOOTER */
+    .footer {
+        padding: 4rem 0;
+        text-align: center;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.85rem;
+        color: #666;
+    }
+
+	/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    /* 1. Ajuste de la Navbar */
+    .navbar {
+        padding: 1rem 0;
+    }
+    
+    .nav-container {
+        flex-direction: column; /* Logo arriba, links abajo */
+        gap: 1rem;
+    }
+
+    .nav-logo {
+        height: 35px;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 0.65rem; /* Links más pequeños para que quepan en una línea */
+    }
+
+    /* 2. Ajuste del Hero */
+    .hero {
+        padding: 0 1rem;
+        height: 100svh; /* svh ayuda en móviles con barras de navegación dinámicas */
+    }
+
+    .hero-bg {
+        /* Aumentamos un poco la oscuridad en móvil para asegurar legibilidad */
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
+                    url('/header.png') no-repeat center center/cover;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem; /* Tamaño manejable para pantallas pequeñas */
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    .hero h2 {
+        font-size: 1.1rem;
+        line-height: 1.4;
+        margin-bottom: 2.5rem;
+        padding: 0 10px;
+    }
+
+    /* 3. Ajuste del Botón */
+    .cta-button {
+        width: 100%; /* Botón ancho completo en móvil para mejor UX */
+        max-width: 300px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    /* 4. Ocultar flecha si estorba en pantallas muy pequeñas */
+    .scroll-down {
+        bottom: 15px;
+        width: 25px;
+    }
+}
+
+/* Ajuste extra para móviles muy pequeños (iPhone SE, etc) */
+@media (max-width: 380px) {
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    .nav-links {
+        gap: 0.8rem;
+    }
+}
+
+/* Configuración de Secciones Genéricas */
+  .section-light {
+    background-color: #e0e0dc; /* El gris de la captura */
+    color: #1a2333;
+    padding: 8rem 0;
+  }
+
+  /* El Grid de dos columnas para texto */
+  .split-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 4rem;
+  }
+
+  /* Estilos de Tipografía para Secciones */
+  .eyebrow {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-transform: none;
+	color: #1a2333;
+  }
+
+  .title-with-bar {
+    border-left: 5px solid #1a2333;
+    padding-left: 2rem;
+  }
+
+  .title-with-bar h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #1a2333;
+  }
+
+  .content-block p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #333;
+    max-width: 550px;
+  }
+
+  /* Responsive Global para estas secciones */
+  @media (max-width: 992px) {
+    .split-grid {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .section-light {
+      padding: 4rem 0;
+    }
+    .content-block p {
+      font-size: 1.1rem;
+    }
+  }
+  /* Contenedores y Secciones */
+  .section {
+    padding: 8rem 0;
+    text-align: center;
+  }
+
+  .section-light {
+    background-color: #e0e0dc; /* El gris de la captura */
+    color: #1a2333;
+  }
+
+  /* Grid Flexible (se adapta a 3 columnas o 1 en móvil) */
+  .grid-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  /* Estilos de Tipografía */
+  .lead {
+    max-width: 700px;
+    margin: 1.5rem auto 0;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #a0a0a8;
+  }
+
+  .section-light .lead {
+    color: #333;
+    margin: 0; /* Para el split-grid */
+    text-align: left;
+  }
+
+  /* Tarjetas (Cards) */
+  .card {
+    padding: 3rem 2rem;
+    background: #16161a;
+    border: 1px solid #2d2d33;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+  }
+
+  .card h3 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    .section { padding: 4rem 0; }
+    .grid-stats { gap: 1.5rem; }
+    .title-with-bar h2 { font-size: 2.2rem; }
+  }
+
+  .trajectory-section {
+    padding: 100px 0;
+    background-color: #0a0a0c; /* Fondo oscuro profundo */
+  }
+
+  /* Alineación de las dos columnas superiores */
+  .trajectory-text {
+    flex: 1;
+    text-align: left;
+  }
+
+  .trajectory-text h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+
+  .lead-trajectory {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .trajectory-text p {
+    font-size: 1.1rem;
+    color: #a0a0a8;
+    line-height: 1.6;
+    max-width: 550px;
+  }
+
+  /* Contenedor del Mapa a la derecha */
+  .trajectory-visual {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Lo empuja a la derecha */
+    align-items: center;
+  }
+
+  .peru-map {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    /* Efecto de línea blanca brillante */
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
+    opacity: 0.9;
+    
+  }
+
+  @keyframes float {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-10px, -20px); }
+  }
+
+  /* El Grid de Stats debajo */
+  .grid-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 5rem; /* Espacio respecto al bloque de arriba */
+  }
+
+  /* Responsive Mobile */
+  @media (max-width: 992px) {
+    .trajectory-visual {
+      justify-content: center;
+      margin: 3rem 0;
+    }
+    .trajectory-text {
+      text-align: center;
+    }
+    .trajectory-text p {
+      margin: 0 auto;
+    }
+  }
+  .quote-section {
+    background-color: #7a8ba3; /* El color azul acero de tu captura */
+    padding: 120px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .quote-container {
+    position: relative;
+    max-width: 900px;
+    padding: 0 4rem;
+  }
+
+  /* Estilo de las comillas */
+  .quote-icon {
+    position: absolute;
+    width: 60px;
+    height: auto;
+    opacity: 0.5;
+  }
+
+  .icon-left {
+    top: -40px;
+    left: -20px;
+  }
+
+  .icon-right {
+    bottom: -40px;
+    right: -20px;
+    transform: rotate(180deg); /* Invierte las comillas para el cierre */
+  }
+
+  .quote-text {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #e2e8f0;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  /* Clase para el efecto de escritura */
+  .word {
+    opacity: 0.1;
+    display: inline-block;
+    transition: opacity 0.4s ease;
+    margin-right: 8px;
+  }
+
+  .word.visible {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .quote-section { padding: 80px 20px; }
+    .quote-icon { width: 40px; }
+  }
+  /* Contenedor de Metodología */
+  .methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas exactas como la imagen */
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  /* Estilo de las tarjetas de servicios */
+  .service-card {
+    background: transparent;
+    border: 1.5px solid #1a2333; /* Borde oscuro fino */
+    border-radius: 15px;
+    padding: 3.5rem 2.5rem;
+    text-align: left;
+    transition: all 0.3s ease;
+  }
+
+  .service-card:hover {
+    background-color: #1a2333;
+    color: white;
+  }
+
+  .service-card h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+    color: inherit; /* Sigue el color del padre (negro o blanco al hover) */
+  }
+
+  /* Ajustes de texto para esta sección clara */
+  .section-light .eyebrow-dark {
+    display: block;
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #000;
+  }
+
+  .section-light .main-title-dark {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: #000;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+  }
+
+  .section-light .sub-text-dark {
+    font-size: 1.2rem;
+    color: #333;
+    max-width: 800px;
+  }
+
+  /* Responsive para móviles */
+  @media (max-width: 768px) {
+    .methodology-grid {
+      grid-template-columns: 1fr; /* 1 columna en móvil */
+    }
+    .service-card {
+      padding: 2.5rem 1.5rem;
+    }
+    .service-card h3 {
+      font-size: 1.8rem;
+    }
+  }
+  .consultants-section {
+    background-color: #0a0a0c; /* Fondo oscuro */
+    padding: 100px 0;
+    overflow: hidden;
+  }
+
+  .consultants-header {
+    margin-bottom: 4rem;
+    text-align: left;
+  }
+
+  /* Contenedor del Carrusel */
+  .carousel-viewport {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 2rem;
+    scrollbar-width: none; /* Oculta scrollbar en Firefox */
+  }
+
+  .carousel-viewport::-webkit-scrollbar {
+    display: none; /* Oculta scrollbar en Chrome/Safari */
+  }
+
+  /* Tarjeta de Consultor */
+  .consultant-card {
+    flex: 0 0 350px; /* Ancho fijo para cada tarjeta */
+    scroll-snap-align: start;
+    background: #16161a;
+    border: 1px solid #2d2d33;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .consultant-card:hover {
+    transform: translateY(-10px);
+    border-color: #444;
+  }
+
+  .consultant-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    filter: grayscale(100%); /* Efecto elegante en blanco y negro */
+    transition: filter 0.3s ease;
+  }
+
+  .consultant-card:hover .consultant-image {
+    filter: grayscale(0%);
+  }
+
+  .consultant-info {
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .consultant-info h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .consultant-info p {
+    color: #a0a0a8;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* Controles visuales (opcional) */
+  .carousel-nav {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #2d2d33;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .consultant-card {
+      flex: 0 0 85%; /* En móvil se ve casi toda la tarjeta */
+    }
+  }
+
+  .section-contact {
+    background-color: #e0e0dc; /* El gris claro de las otras secciones */
+    padding: 120px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contact-container {
+    text-align: center; /* Centra el texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-contact h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #1a2333;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+  }
+
+  .contact-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Para que en móvil se ponga uno debajo de otro */
+    justify-content: center;
+  }
+
+  .contact-item {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .contact-item:hover {
+    color: #000;
+    border-bottom: 1px solid #000;
+  }
+
+  .separator {
+    color: #999;
+    font-weight: 300;
+  }
+
+  /* Ajuste Responsive */
+  @media (max-width: 768px) {
+    .contact-links {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .separator {
+      display: none; /* Ocultamos la barra en móvil */
+    }
+    .section-contact {
+      padding: 80px 20px;
+    }
+  }
 </style>

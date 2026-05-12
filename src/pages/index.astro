@@ -1,11 +1,236 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Jeronimo Centurión - Estrategia y Comunicación">
+  
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Navega la incertidumbre con <i>claridad estratégica</i></h1>
+        <p class="subtitle">En un contexto acelerado y cambiante. Te orientamos hacia decisiones <b>estratégicas</b>.</p>
+        <h2>No solo comunicamos, conectamos los puntos entre lo digital y lo real para alcanzar tus objetivos comerciales</h2>
+        <a href="#contacto" class="cta-button">Iniciemos una conversación</a>
+      </div>
+    </div>
+    <div class="scroll-down">
+      <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container split-grid">
+      <div class="header-side">
+        <span class="eyebrow">Inteligencia sobre la Inmediatez</span>
+        <div class="title-with-bar">
+          <h2>No diseñamos fórmulas, <br/> trazamos rutas</h2>
+        </div>
+      </div>
+      <div class="content-block">
+        <p class="lead">
+          En un entorno que exige visión antes que reacción, sustituimos la teoría por la experiencia real en el Perú profundo y diverso.
+        </p>
+        <p class="lead">
+          Definimos objetivos donde la comunicación es el eje de la estrategia pura, <strong>transformando la incertidumbre en una ventaja competitiva</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section trajectory-section">
+  <div class="container">
+    
+    <div class="split-grid">
+      
+      <div class="trajectory-text">
+        <span class="eyebrow">Experiencia Real</span>
+        <h2>Nuestra Trayectoria</h2>
+        <p class="lead-trajectory">
+          Ayudamos a la alta dirección a trascender la "tiranía de lo urgente".
+        </p>
+        <p>
+          15 años transformando desafíos complejos en viabilidad estratégica. 
+          Nuestra historia se define por la escala de los retos que asumimos y 
+          la precisión de nuestras soluciones.
+        </p>
+      </div>
+
+      <div class="trajectory-visual">
+        <img src="/peru-outline.svg" alt="Mapa Perú Vector" class="peru-map" />
+      </div>
+
+    </div>
+
+    <div class="grid-stats">
+      <div class="card">
+        <h3>+15 años</h3>
+        <p>Diseñando estrategias de alta complejidad para los sectores público y privado.</p>
+      </div>
+      <div class="card">
+        <h3>Proyectos</h3>
+        <p>Especialistas en viabilidad social y estratégica para inversiones > $1B.</p>
+      </div>
+      <div class="card">
+        <h3>Alcance</h3>
+        <p>Presencia operativa en todo el país y todos los niveles de decisión.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="quote-section">
+  <div class="quote-container">
+    <img src="/quote-icon.svg" class="quote-icon icon-left" alt="quote" />
+    
+    <p class="quote-text" id="typewriter-quote">
+      Podemos sentarnos con políticos, empresarios y líderes sociales para generar transformaciones profundas, pero no nos limitamos a eso. Nuestra verdadera fortaleza radica en nuestra capacidad para navegar en los entornos más complejos, donde la incertidumbre es la norma y las soluciones convencionales no funcionan.
+    </p>
+
+    <img src="/quote-icon.svg" class="quote-icon icon-right" alt="quote" />
+  </div>
+</section>
+
+<script>
+  function setupTypewriter() {
+    const quoteElement = document.getElementById('typewriter-quote');
+    if (!quoteElement) return;
+
+    const text = quoteElement.innerText;
+    const words = text.split(' ');
+    
+    // Limpiamos el texto y lo envolvemos en spans
+    quoteElement.innerHTML = words
+      .map(word => `<span class="word">${word}</span>`)
+      .join('');
+
+    const wordSpans = quoteElement.querySelectorAll('.word');
+
+    // Observer para disparar la animación al entrar en pantalla
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animación palabra por palabra
+          wordSpans.forEach((span, index) => {
+            setTimeout(() => {
+              span.classList.add('visible');
+            }, index * 150); // Velocidad: 150ms entre palabras
+          });
+          observer.unobserve(entry.target); // Solo animar una vez
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(quoteElement);
+  }
+
+  // Ejecutar al cargar la página
+  setupTypewriter();
+</script>
+
+<section class="section section-light">
+  <div class="container" style="text-align: left;">
+    
+    <span class="eyebrow-dark">Nuestra Metodología: Inteligencia sobre la Inmediatez</span>
+    <h2 class="main-title-dark">En la urgencia del día a día, es fácil perder de vista el destino.</h2>
+    <p class="sub-text-dark">
+      No ofrecemos soluciones genéricas; diseñamos respuestas tácticas para entornos de alta complejidad.
+    </p>
+
+    <div class="methodology-grid">
+      
+      <div class="service-card">
+        <h3>Estrategias <br/> Ad Hoc</h3>
+        <p>
+          Cada desafío es único. Nuestras estrategias se diseñan a medida, basadas en un análisis profundo del contexto y los objetivos específicos de cada cliente.
+      </div>
+
+      <div class="service-card">
+        <h3>Inteligencia de <br/> Coyuntura</h3>
+        <p>
+          Anticipamos movimientos y tendencias para que nuestros clientes siempre estén un paso adelante, transformando la incertidumbre en una ventaja competitiva.
+      </div>
+
+      <div class="service-card">
+        <h3>Media Training <br/> de Élite</h3>
+        <p>
+          Preparamos a líderes para enfrentar los medios con confianza y autenticidad, asegurando que cada mensaje resuene con claridad y propósito.
+      </div>
+
+      <div class="service-card">
+        <h3>Storytelling de <br/> Legitimidad</h3>
+        <p>
+          Construimos narrativas poderosas que conectan con las audiencias, fortaleciendo la legitimidad y el impacto de cada iniciativa.
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="consultants-section">
+  <div class="container">
+    
+    <div class="consultants-header">
+      <span class="eyebrow" style="color: #666;">Nuestro Equipo</span>
+      <h2 style="font-size: 3rem; color: white;">Consultores Estratégicos</h2>
+    </div>
+
+    <div class="carousel-viewport">
+      
+      <div class="consultant-card">
+        <img src="/team/jeronimo.jpg" alt="Jerónimo Centurión" class="consultant-image" />
+        <div class="consultant-info">
+          <h3>Jerónimo Centurión</h3>
+          <p>Estratega en comunicación y manejo de crisis con más de 20 años de trayectoria.</p>
+        </div>
+      </div>
+
+      <div class="consultant-card">
+        <img src="/team/abel.jpg" alt="Abel Gutiérrez" class="consultant-image" />
+        <div class="consultant-info">
+          <h3>Abel Gutiérrez</h3>
+          <p>Especialista en inteligencia de coyuntura y análisis de riesgos políticos.</p>
+        </div>
+      </div>
+
+      <div class="consultant-card">
+        <img src="/team/monica.jpg" alt="Mónica Rubio" class="consultant-image" />
+        <div class="consultant-info">
+          <h3>Mónica Rubio</h3>
+          <p>Consultora senior en storytelling de legitimidad y relaciones institucionales.</p>
+        </div>
+      </div>
+
+      <div class="consultant-card">
+        <img src="/team/nahun.jpg" alt="Nombre" class="consultant-image" />
+        <div class="consultant-info">
+          <h3>Nahun Saldaña</h3>
+          <p>Consultor en innovación y tecnología para el impacto positivo  </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+  <section id="contacto" class="section-contact">
+  <div class="container contact-container">
+ 
+    <h2>Iniciemos una conversación</h2>
+    
+    <div class="contact-links">
+      <a href="mailto:jeronimocenturion@gmail.com" class="contact-item">
+        jeronimocenturion@gmail.com
+      </a>
+      <span class="separator">|</span>
+      <a href="https://wa.me/51991960321" target="_blank" class="contact-item">
+        +51 991 960 321
+      </a>
+    </div>
+  </div>
+</section>
+
 </Layout>
