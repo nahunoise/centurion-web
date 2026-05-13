@@ -328,7 +328,7 @@ const { title } = Astro.props;
     font-weight: 700;
     margin-bottom: 1.5rem;
     text-transform: none;
-	color: #ffffff;
+	color: #1a2333;
   }
 
   .title-with-bar {
@@ -849,6 +849,50 @@ const { title } = Astro.props;
     }
     .clients-header h2 {
       font-size: 1.5rem;
+    }
+  }
+  .video-case-container {
+    margin-top: 6rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .video-eyebrow {
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #a0a0a8;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  .video-wrapper {
+    position: relative;
+    max-width: 900px; /* Ancho máximo para que no ocupe toda la pantalla en PC */
+    margin: 0 auto;
+    aspect-ratio: 16 / 9; /* Mantiene la proporción del video */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Ajuste para móvil */
+  @media (max-width: 768px) {
+    .video-case-container {
+      margin-top: 4rem;
+    }
+    .video-wrapper {
+      border-radius: 12px; /* Menos redondeado en pantallas pequeñas */
     }
   }
   
