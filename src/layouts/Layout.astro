@@ -328,7 +328,7 @@ const { title } = Astro.props;
     font-weight: 700;
     margin-bottom: 1.5rem;
     text-transform: none;
-	color: #1B263B;
+	color: #ffffff;
   }
 
   .title-with-bar {
@@ -782,6 +782,73 @@ const { title } = Astro.props;
     }
     .section-contact {
       padding: 80px 20px;
+    }
+  }
+  .section-clients {
+    background-color: #e0e0dc; /* Mismo gris claro de la captura */
+    padding: 100px 0;
+    text-align: center;
+  }
+
+  .clients-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+    color: #1a2333;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .clients-header p {
+    font-size: 1.1rem;
+    color: #4a4a4f;
+    margin-bottom: 4rem;
+  }
+
+  /* Grid de logotipos */
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columnas como en la imagen */
+    gap: 3rem 2rem;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .client-logo img {
+    width: 100%;
+    max-width: 140px; /* Tamaño máximo de cada logo */
+    height: auto;
+    filter: grayscale(100%); /* Efecto blanco y negro */
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+
+  .client-logo img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  /* Responsive para tablets y móviles */
+  @media (max-width: 992px) {
+    .clients-grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablets */
+      gap: 3rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .clients-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columnas en móviles */
+      gap: 2.5rem 1rem;
+    }
+    .section-clients {
+      padding: 60px 0;
+    }
+    .clients-header h2 {
+      font-size: 1.5rem;
     }
   }
   
