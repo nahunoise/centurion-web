@@ -127,13 +127,13 @@ import Layout from '../layouts/Layout.astro';
 </section>
 <section class="quote-section">
   <div class="quote-container">
-    <img src="/quote-icon.svg" class="quote-icon icon-left" alt="quote" />
+    
     
     <p class="quote-text" id="typewriter-quote">
       Podemos sentarnos con políticos, empresarios y líderes sociales para generar transformaciones profundas, pero no nos limitamos a eso. Nuestra verdadera fortaleza radica en nuestra capacidad para navegar en los entornos más complejos, donde la incertidumbre es la norma y las soluciones convencionales no funcionan.
     </p>
 
-    <img src="/quote-icon.svg" class="quote-icon icon-right" alt="quote" />
+    
   </div>
 </section>
 
@@ -212,54 +212,58 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 </section>
-<section id="equipo" class="consultants-section">
+       <section id="equipo" class="consultants-section">
   <div class="container">
-    
     <div class="consultants-header">
       <span class="eyebrow" style="color: #ffffff;">Nuestro Equipo</span>
       <h2 style="font-size: 3rem; color: white;">Consultores Estratégicos</h2>
     </div>
 
-    <div class="carousel-viewport">
-      
-      <div class="consultant-card">
-        <img src="/team/jeronimo.jpg" alt="Jerónimo Centurión" class="consultant-image" />
-        <div class="consultant-info">
-          <h3>Jerónimo Centurión</h3>
-          <p>Director General / Estrategia General Periodista con más de 20 años de experiencia en medios nacionales e internacionales. Especialista en el desarrollo de estrategias de comunicación institucional y posicionamiento para el sector público y privado. Actualmente lidera la comunicación estratégica para empresas globales como DSM Firmenich y proyectos de infraestructura crítica como Benito Roggio en el Perú.
-</p>
-        </div>
-      </div>
+          <div class="carousel-container">
+      <div class="carousel-viewport" id="carousel">
+              <div class="consultant-card">
+                <img src="/team/jeronimo.jpg" alt="Jerónimo Centurión" class="consultant-image" />
+                <div class="consultant-info">
+                  <h3>Jerónimo Centurión</h3>
+                  <p>Director General / Estrategia General Periodista con más de 20 años de experiencia en medios nacionales e internacionales. Especialista en el desarrollo de estrategias de comunicación institucional y posicionamiento para el sector público y privado. Actualmente lidera la comunicación estratégica para empresas globales como DSM Firmenich y proyectos de infraestructura crítica como Benito Roggio en el Perú.
+        </p>
+                </div>
+              </div>
 
-      <div class="consultant-card">
-        <img src="/team/abel.jpg" alt="Abel Gutiérrez" class="consultant-image" />
-        <div class="consultant-info">
-          <h3>Martín Cabrera</h3>
-          <p>Asuntos Públicos y Análisis Institucional Abogado especializado en gestión pública, asuntos parlamentarios y relacionamiento interinstitucional con más de 15 años de experiencia. Experto en procesos de articulación con el Estado, ha liderado estrategias con ministerios, gobiernos regionales y el Congreso. Es árbitro en Contrataciones Públicas y especialista en la solución de controversias.
-</p>
-        </div>
-      </div>
+              <div class="consultant-card">
+                <img src="/team/abel.jpg" alt="Abel Gutiérrez" class="consultant-image" />
+                <div class="consultant-info">
+                  <h3>Martín Cabrera</h3>
+                  <p>Asuntos Públicos y Análisis Institucional Abogado especializado en gestión pública, asuntos parlamentarios y relacionamiento interinstitucional con más de 15 años de experiencia. Experto en procesos de articulación con el Estado, ha liderado estrategias con ministerios, gobiernos regionales y el Congreso. Es árbitro en Contrataciones Públicas y especialista en la solución de controversias.
+        </p>
+                </div>
+              </div>
 
-      <div class="consultant-card">
-        <img src="/team/monica.jpg" alt="Mónica Rubio" class="consultant-image" />
-        <div class="consultant-info">
-          <h3>Mónica Rubio</h3>
-          <p>Economista y exministra de Desarrollo e Inclusión Social (MIDIS). Especialista en el diseño y evaluación de políticas sociales con amplia trayectoria en organismos internacionales. Aporta una mirada técnica fundamental para proyectos que requieren legitimidad social y sostenibilidad.</p>
-        </div>
-      </div>
+              <div class="consultant-card">
+                <img src="/team/monica.jpg" alt="Mónica Rubio" class="consultant-image" />
+                <div class="consultant-info">
+                  <h3>Mónica Rubio</h3>
+                  <p>Economista y exministra de Desarrollo e Inclusión Social (MIDIS). Especialista en el diseño y evaluación de políticas sociales con amplia trayectoria en organismos internacionales. Aporta una mirada técnica fundamental para proyectos que requieren legitimidad social y sostenibilidad.</p>
+                </div>
+              </div>
 
-      <div class="consultant-card">
-        <img src="/team/nahun.jpg" alt="Nombre" class="consultant-image" />
-        <div class="consultant-info">
-          <h3>Nahun Saldaña</h3>
-          <p>Diseñador digital estratégico experto en la construcción de identidades visuales para entornos de alta exposición. Utiliza la tecnología y el diseño como herramientas de comunicación política para potenciar la autoridad y el propósito de la narrativa de marca.</p>
-        </div>
-      </div>
-
+              <div class="consultant-card">
+                <img src="/team/nahun.jpg" alt="Nombre" class="consultant-image" />
+                <div class="consultant-info">
+                  <h3>Nahun Saldaña</h3>
+                  <p>Diseñador digital estratégico experto en la construcción de identidades visuales para entornos de alta exposición. Utiliza la tecnología y el diseño como herramientas de comunicación política para potenciar la autoridad y el propósito de la narrativa de marca.</p>
+                </div>
+              </div>
+<button class="nav-btn prev" id="prevBtn" aria-label="Anterior">←</button>
+      <button class="nav-btn next" id="nextBtn" aria-label="Siguiente">→</button>
     </div>
-  </div>
-  
-</section>
+   
+            </div>
+          </div>
+           <div class="scroll-track">
+      <div class="scroll-thumb" id="scrollThumb"></div>
+    </div>
+        </section>
 
 
   <section id="contacto" class="section-contact">
@@ -278,5 +282,54 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </div>
 </section>
+<script>
+  const slider = document.getElementById('carousel');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const thumb = document.getElementById('scrollThumb');
+
+  // 1. Navegación con botones
+  prevBtn.addEventListener('click', () => {
+    slider.scrollBy({ left: -400, behavior: 'smooth' });
+  });
+
+  nextBtn.addEventListener('click', () => {
+    slider.scrollBy({ left: 400, behavior: 'smooth' });
+  });
+
+  // 2. Barra de progreso dinámica
+  slider.addEventListener('scroll', () => {
+    const scrollPercentage = (slider.scrollLeft / (slider.scrollWidth - slider.clientWidth)) * 100;
+    thumb.style.left = `${scrollPercentage * 0.75}%`; // 0.75 para que no se salga del track
+  });
+
+  // 3. Funcionalidad de Arrastre (Drag to Scroll) para Desktop
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2; // Velocidad de desplazamiento
+    slider.scrollLeft = scrollLeft - walk;
+  });
+</script>
 
 </Layout>
